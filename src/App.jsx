@@ -77,12 +77,18 @@ function App() {
           <h2 className="text-lg font-semibold my-4">Add a Todo</h2>
           <div className="flex flex-col md:flex-row justify-center items-center gap-3">
             <input
-              onChange={handleChange}
-              value={todo}
-              type="text"
-              className="w-full md:w-1/2 rounded-md p-2 border border-gray-500"
-              placeholder="Enter your task here"
-            />
+                onChange={handleChange}
+                value={todo}
+                type="text"
+                className="w-full md:w-1/2 rounded-md p-2 border border-gray-500"
+                placeholder="Enter your task here"
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter') {
+                    handleAdd();
+                  }
+                }}
+              />
+
             <button
               onClick={handleAdd}
               disabled={todo.length === 0}
